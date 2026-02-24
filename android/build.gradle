@@ -51,7 +51,7 @@ android {
 
     dependencies {
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
-        implementation platform('com.google.firebase:firebase-bom:33.9.0')
+        implementation platform('com.google.firebase:firebase-bom:34.1.0')
         implementation 'com.google.firebase:firebase-messaging'
 
         compileOnly files("${System.getenv("FLUTTER_HOME")}/bin/cache/artifacts/engine/android-arm64-release/flutter.jar")
