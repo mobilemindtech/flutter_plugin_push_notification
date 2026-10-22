@@ -2,7 +2,7 @@ group 'io.flutter.plugins.push'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.9.25'
+    ext.kotlinVersion = "2.4.0"
     repositories {
         google()
         mavenCentral()
@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:8.1.4'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
 
@@ -22,22 +22,21 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
         namespace 'io.flutter.plugins.push'
     }
 
-    compileSdk 34
+    compileSdk 36
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     sourceSets {
@@ -46,12 +45,12 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 24
     }
 
     dependencies {
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
-        implementation platform('com.google.firebase:firebase-bom:34.1.0')
+        implementation platform('com.google.firebase:firebase-bom:35.0.2')
         implementation 'com.google.firebase:firebase-messaging'
 
         compileOnly files("${System.getenv("FLUTTER_HOME")}/bin/cache/artifacts/engine/android-arm64-release/flutter.jar")
